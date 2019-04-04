@@ -8,7 +8,7 @@ if(empty($_GET['productId'])){
     throw new Exception('not valid product id');
 }
 
-$id = (int)$_GET['productId']; // ?productId=1 then productId will be 1
+$id = (int)$_GET['productId']; // ?productId=1 then productId will be 1 (change id to interger)
 
 $query= "SELECT `p`.`id`, `p`.`name`, 
         `p`.`price`,
@@ -18,7 +18,7 @@ $query= "SELECT `p`.`id`, `p`.`name`,
         FROM `products` AS `p` 
         JOIN `images` AS `i` 
         ON `p`.`id` = `i`.`products_id`
-        WHERE `p`.`id` = $id 
+        WHERE `p`.`id` = '{$id}' 
         GROUP BY `p`.`id`
         ";
 
