@@ -2,6 +2,12 @@
   "name": "wicked_sales",
   "version": "1.0.0",
   "description": "Generic E-commerce website with ReactJs Client and PHP Backend",
+  "proxy":{
+    "/api/*":{
+      "target": "http://localhost"
+    }
+    
+  },
   "main": "index.js",
   "scripts": {
     "start": "node dev_server.js",
