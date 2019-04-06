@@ -40,7 +40,7 @@ $data['images'] = explode(',',$data['images']); //make str to arr
 
 $output = [
     'success'=> true,
-    'productIndo' => $data
+    'productInfo' => $data
 ];
 
 $json_output = json_encode($output);

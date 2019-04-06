@@ -6,8 +6,8 @@ class Nav extends Component{
     renderLinks(){
         return(
             <Fragment>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/products">Products</Link></li>
+            <li className="sidenav-close"><Link to="/">Home</Link></li>
+            <li className="sidenav-close"><Link to="/products">Products</Link></li>
             </Fragment>
         )
     }
