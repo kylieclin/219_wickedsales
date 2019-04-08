@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import axios from 'axios';
-
+import Carousel from './product_carousel';
 
 class ProductDetails extends Component{
     constructor(props){
@@ -13,10 +13,7 @@ class ProductDetails extends Component{
     componentDidMount(){
         this.getDetails();
 
-        M.Carousel.init(this.carouselimg, {
-            fullWidth: true,
-            
-          });
+
     }
     async getDetails(){
         const {params} = this.props.match; //created by index.js Route path="/products/:product_id"
@@ -58,19 +55,13 @@ class ProductDetails extends Component{
             return (<div className="center" key={key}>{value[0]}:{value[1]}</div>)
         })
 
-        const img = images.map((imageurl,index)=>{
-            return  (
-                <a className="carousel-item active" href="#one!" key={index} >
-                    <img src={`/dist/${imageurl}`} alt={name}/>
-                </a>
-            )
-        })
+
         return (
             <div className="product-details">
                 <h1 className="center">{name}</h1>
-                <div className="" ref={(element)=>{this.carouselimg = element}}>
-                {img}
-                </div>
+                
+                <Carousel images={images}/>
+                
                 <p>{description}</p>
                 {misc}
             </div>
