@@ -1,6 +1,8 @@
 import React , {Component} from 'react';
 import axios from 'axios';
 import Carousel from './product_carousel';
+import {formatMoney} from '../../helpers';
+import MiscDetails from './misc_detail';
 
 class ProductDetails extends Component{
     constructor(props){
@@ -13,15 +15,13 @@ class ProductDetails extends Component{
     componentDidMount(){
         this.getDetails();
 
-
     }
     async getDetails(){
         const {params} = this.props.match; //created by index.js Route path="/products/:product_id"
         // console.log(params.product_id);
-
+debugger;
         const resp = await axios.get(`/api/getproduct_details.php?productId=${params.product_id}`) 
         //or `` 
-        
         try{
             if(resp.data.success){
                 this.setState({
@@ -48,22 +48,38 @@ class ProductDetails extends Component{
             return<h1>No Product Found</h1> 
         }
         
-        const {name, description="Description Unavaible", images ,miscDetails} = details;
+        const {name, description="Description Unavaible", images ,miscDetails, price} = details;
         //get obj key name for misc details
 
-        const misc = Object.entries(miscDetails).map((value, key)=>{
-            return (<div className="center" key={key}>{value[0]}:{value[1]}</div>)
-        })
-
+        // const misc = Object.entries(miscDetails).map((value, key)=>{
+        //     return (<div className="misc-details" key={key}>{value[0]}:{value[1]}</div>)
+        // })
+        
 
         return (
             <div className="product-details">
                 <h1 className="center">{name}</h1>
-                
-                <Carousel images={images}/>
-                
-                <p>{description}</p>
-                {misc}
+                <div className="row">
+                    <Carousel images={images} />
+
+                    <div className="col s12 m4">
+                        <div className="right-align product-price">{formatMoney(price)}</div> 
+                        <div className="right-align add-to-cart">
+                            <span className="qty-container">
+                                <button className="btn"><i className="material-icons">remove</i></button>
+                                <span className="product-qty">1</span>
+                                <button className="btn"><i className="material-icons">add</i></button>
+                            </span>
+                            <button className="btn">
+                                <i className="material-icons">add_shopping_cart</i>
+                            </button>
+                        </div>
+                        
+                        
+                        <div>{description}</div>
+                        <MiscDetails miscDetails={miscDetails}/>
+                    </div>
+                </div>
             </div>
         )
     }

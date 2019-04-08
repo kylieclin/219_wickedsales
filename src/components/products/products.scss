@@ -6,4 +6,37 @@
             background-color: lightgray;
         }
     }
+
+    .product-details{
+        
+        .product-price{
+            font-size: 1.5em;
+            font-weight: bold;
+
+        }
+
+        .carousel{
+            border: 1px solid black;
+            height: 300px;
+    
+            .indicator-item{
+                background-color:rgba(0, 128, 0, 0.5);
+            }
+
+            .indicator-item.active{
+                background-color:rgba(148, 91, 27, 0.5);
+            }
+        }
+
+        .add-to-cart{
+            font-size: 2em;
+
+            .qty-container{
+                margin: 0 30px;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    
 }
