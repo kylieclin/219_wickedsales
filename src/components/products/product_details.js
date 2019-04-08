@@ -12,6 +12,11 @@ class ProductDetails extends Component{
     }
     componentDidMount(){
         this.getDetails();
+
+        M.Carousel.init(this.carouselimg, {
+            fullWidth: true,
+            
+          });
     }
     async getDetails(){
         const {params} = this.props.match; //created by index.js Route path="/products/:product_id"
@@ -37,7 +42,6 @@ class ProductDetails extends Component{
     }
 
     render(){
-        console.log(this.state)
 
         const {details} = this.state;
 
@@ -47,12 +51,28 @@ class ProductDetails extends Component{
             return<h1>No Product Found</h1> 
         }
         
-        const {name, description="Description Unavaible"} = details;
+        const {name, description="Description Unavaible", images ,miscDetails} = details;
         //get obj key name for misc details
+
+        const misc = Object.entries(miscDetails).map((value, key)=>{
+            return (<div className="center" key={key}>{value[0]}:{value[1]}</div>)
+        })
+
+        const img = images.map((imageurl,index)=>{
+            return  (
+                <a className="carousel-item active" href="#one!" key={index} >
+                    <img src={`/dist/${imageurl}`} alt={name}/>
+                </a>
+            )
+        })
         return (
             <div className="product-details">
                 <h1 className="center">{name}</h1>
+                <div className="" ref={(element)=>{this.carouselimg = element}}>
+                {img}
+                </div>
                 <p>{description}</p>
+                {misc}
             </div>
         )
     }
