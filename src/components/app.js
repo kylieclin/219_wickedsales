@@ -6,12 +6,15 @@ import {Route} from 'react-router-dom';
 import ProductRoutes from './products'; //look for index file in the folder
 import Home from './products/home';
 import Nav from './nav';
+import Test from './test';
+
 const App = () => (
     <div>
         <Nav />
         <div className="container">
             <Route exact path="/" component={Home} />
             <Route path="/products" component={ProductRoutes} />
+            <Route path="/test" component={Test}/>
         </div>
 
     </div>
