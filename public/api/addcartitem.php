@@ -5,7 +5,11 @@ set_exception_handler('handleError');
 require_once('config.php');
 require_once('mysqlconnect.php');
 
-$product_id = 1;
+if(empty($_GET['product_id'])){
+    throw new Exception('You must send a product id with your request')
+}
+
+$product_id = (int)$_GET['product_id'];
 $product_quantity = 1;
 $user_id = 1;
 
@@ -26,7 +30,7 @@ $product_data = mysqli_fetch_assoc($result);
 $product_price = (int)$product_data['price'];
 $product_total = $product_price * $product_quantity;
 
-if(empty($cart_id)){
+if(empty($_SESSION['cart_id'])){
     $cart_create_query = "INSERT INTO `carts` SET 
     `item_count`=$product_quantity, 
     `total_price`=$product_total, 
@@ -40,13 +44,18 @@ if(empty($cart_id)){
     if(mysqli_affected_rows($conn) === 0){
         throw new Exception('data was not added to cart table');
     }
-    $cart_id = mysqli_insert_id($conn); //get insert id
+    $cart_id = mysqli_insert_id($conn); //get insert id (make a cart id)
+    $_SESSION['cart_id'] = $cart_id;
+} else {
+    $cart_id = $_SESSION['cart_id']; //if we have cart id we use it
 }
 
 $cart_item_query = "INSERT INTO `cart_items` SET
 `products_id` = $product_id,
 `quantity` = $product_quantity,
 `carts_id` = $cart_id
+ON DUPLICATE KEY UPDATE 
+`quantity` = `quantity` + $product_quantity
 ";
 
 $cart_item_result = mysqli_query($conn, $cart_item_query);
