@@ -1,0 +1,26 @@
+.not-found{
+    display: flex;
+    height: calc(100vh - 64px);
+
+    .not-found-content{
+        margin: auto;
+
+        i{
+            font-size: 4em;
+
+            &:hover{
+                color: rgb(25, 92, 25);
+                font-size: 10em;
+                cursor: pointer;
+            }
+        }
+
+        .link{
+            color: black;
+
+            &:visited{
+                color: black;
+            }
+        }
+    }
+}
