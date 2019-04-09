@@ -16,9 +16,9 @@ class Nav extends Component{
 
         return (
         <div className="navbar-fixed">
-            <nav className="green darken-3 ">
+            <nav className="pink darken-2">
                 <div className="nav-wrapper">
-                    <Link className="brand-logo" to="/">Wicked Sales</Link>
+                    <Link className="brand-logo" to="/">Yum Ice Cream</Link>
                     <a href="#" data-target="sidenav" className="sidenav-trigger right">
                         <i className="material-icons">menu</i>
                     </a>

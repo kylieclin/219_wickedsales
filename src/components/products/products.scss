@@ -3,7 +3,7 @@
         cursor: pointer;
 
         &:hover{
-            background-color: lightgray;
+            background-color: rgba(228, 168, 203, 0.5);
         }
     }
 
@@ -16,15 +16,15 @@
         }
 
         .carousel{
-            border: 1px solid black;
+
             height: 300px;
     
             .indicator-item{
-                background-color:rgba(0, 128, 0, 0.5);
+                background-color:rgba(231, 148, 206, 0.5);
             }
 
             .indicator-item.active{
-                background-color:rgba(148, 91, 27, 0.5);
+                background-color:rgba(189, 37, 113, 0.5);
             }
         }
 
@@ -35,6 +35,15 @@
                 margin: 0 30px;
                 vertical-align: middle;
             }
+
+            .add-to-cart-btn{
+                display: inline-block;
+            }
+        }
+
+        .product-qty{
+            padding: 0 10px;
+            margin: 0 10px;
         }
     }
 

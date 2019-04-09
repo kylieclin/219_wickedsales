@@ -33,10 +33,10 @@ class ProductList extends Component{
 
         return (
             <div className="product-list">
-                <h1 className="center">Wicked Product List</h1>
-                <ul className="collection">
+                <h1 className="center pink-text text-lighten-3">Ice Cream List</h1>
+                <div className="collection products row">
                    {productlist} 
-                </ul>
+                </div>
                 
             </div>
         )

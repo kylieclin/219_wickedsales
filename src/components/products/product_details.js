@@ -59,21 +59,24 @@ class ProductDetails extends Component{
 
         return (
             <div className="product-details">
-                <h1 className="center">{name}</h1>
+                <h1 className="center pink-text text-lighten-3">{name}</h1>
                 <div className="row">
                     <Carousel images={images} />
 
                     <div className="col s12 m4">
                         <div className="right-align product-price">{formatMoney(price)}</div> 
-                        <div className="right-align add-to-cart">
-                            <span className="qty-container">
-                                <button className="btn"><i className="material-icons">remove</i></button>
-                                <span className="product-qty">1</span>
-                                <button className="btn"><i className="material-icons">add</i></button>
-                            </span>
-                            <button className="btn">
-                                <i className="material-icons">add_shopping_cart</i>
-                            </button>
+                        <div className="right-align add-to-cart row">
+                            <div className="qty-container col">
+                                <button className="btn btn-floating pink darken-1"><i className="material-icons">remove</i></button>
+                                <span className="product-qty pink lighten-5">1</span>
+                                <button className="btn btn-floating pink darken-1"><i className="material-icons">add</i></button>
+                            </div>
+                            <div className="add-to-cart-btn">
+                                <button className="btn-large pink darken-2">
+                                    <i className="material-icons">add_shopping_cart</i>
+                                </button> 
+                            </div>
+
                         </div>
                         
                         
