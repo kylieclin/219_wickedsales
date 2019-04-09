@@ -3,6 +3,7 @@ import axios from 'axios';
 import Carousel from './product_carousel';
 import {formatMoney} from '../../helpers';
 import MiscDetails from './misc_detail';
+import {Link} from 'react-router-dom';
 
 class ProductDetails extends Component{
     constructor(props){
@@ -19,7 +20,7 @@ class ProductDetails extends Component{
     async getDetails(){
         const {params} = this.props.match; //created by index.js Route path="/products/:product_id"
         // console.log(params.product_id);
-debugger;
+
         const resp = await axios.get(`/api/getproduct_details.php?productId=${params.product_id}`) 
         //or `` 
         try{
@@ -45,7 +46,7 @@ debugger;
         if(details === null){
             return<h1>Loading</h1> 
         } else if (!details){
-            return<h1>No Product Found</h1> 
+            return <Link to="/"><h1>No Product Found</h1></Link> 
         }
         
         const {name, description="Description Unavaible", images ,miscDetails, price} = details;
