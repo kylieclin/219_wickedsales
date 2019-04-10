@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 
 class ProductAdd extends Component{
@@ -28,12 +29,15 @@ class ProductAdd extends Component{
     }
     async addToCart(){
         const id = this.props.product_id;
-        const resp = await axios.get(`/api/addcartitem.php?product_id=${id}`);
+        const {quantity} = this.state;
+        const resp = await axios.get(`/api/addcartitem.php?product_id=${id}&quantity=${quantity}`);
 
         try{
+            this.props.history.push('/cart');
             if(resp.data.success){
+
                 this.setState({
-                    message: 'Product added to cart'
+                    message: 'Product added to cart :)'
                 })
             }
         } catch(error) {
@@ -42,6 +46,7 @@ class ProductAdd extends Component{
 
     }
     render(){
+        console.log(this.props);
         return(
             <div className="right-align add-to-cart row">
                 <div className="qty-container">
@@ -54,10 +59,10 @@ class ProductAdd extends Component{
                         <i className="material-icons">add_shopping_cart</i>
                     </button> 
                 </div>
-                <h6 className="red-text">{this.state.message}</h6>
+                <h6 className="pink-text text-lighten-2">{this.state.message}</h6>
             </div>
         )
     }
 }
 
-export default ProductAdd;
+export default withRouter(ProductAdd);

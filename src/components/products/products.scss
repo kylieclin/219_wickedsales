@@ -16,7 +16,7 @@
         }
 
         .carousel{
-
+            background-color: #fce4ec;
             height: 300px;
     
             .indicator-item{
@@ -33,9 +33,12 @@
 
             .qty-container{
                 margin: 0 30px;
-                vertical-align: middle;
+                position: relative;
+
                 .product-qty{
                     width: 50px;
+                    position: relative;
+                    top: 5px;
                 }
             }
 
