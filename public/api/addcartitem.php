@@ -10,7 +10,7 @@ if(empty($_GET['product_id'])){
 }
 
 $product_id = (int)$_GET['product_id'];
-$cart_quantity = $product_quantity = 1;
+$cart_quantity = $product_quantity = (int)$_GET['quantity'];
 $user_id = 1;
 
 $query = "SELECT `p`.`price` FROM `products`AS`p` WHERE `p`.`id` = $product_id ";

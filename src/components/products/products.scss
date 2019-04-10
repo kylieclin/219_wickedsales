@@ -10,13 +10,13 @@
     .product-details{
         
         .product-price{
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: bold;
 
         }
 
         .carousel{
-
+            background-color: #fce4ec;
             height: 300px;
     
             .indicator-item{
@@ -33,10 +33,16 @@
 
             .qty-container{
                 margin: 0 30px;
-                vertical-align: middle;
+                position: relative;
+
+                .product-qty{
+                    width: 50px;
+                    position: relative;
+                    top: 5px;
+                }
             }
 
-            .add-to-cart-btn{
+            .add-to-cart-btn, .qty-container, .product-qty{
                 display: inline-block;
             }
         }
