@@ -4,6 +4,7 @@ import Carousel from './product_carousel';
 import {formatMoney} from '../../helpers';
 import MiscDetails from './misc_detail';
 import {Link} from 'react-router-dom';
+import ProductAdd from './product_add';
 
 class ProductDetails extends Component{
     constructor(props){
@@ -40,7 +41,7 @@ class ProductDetails extends Component{
     }
 
     render(){
-
+        const {params} = this.props.match;
         const {details} = this.state;
 
         if(details === null){
@@ -65,21 +66,7 @@ class ProductDetails extends Component{
 
                     <div className="col s12 m4">
                         <div className="right-align product-price">{formatMoney(price)}</div> 
-                        <div className="right-align add-to-cart row">
-                            <div className="qty-container col">
-                                <button className="btn btn-floating pink darken-1"><i className="material-icons">remove</i></button>
-                                <span className="product-qty pink lighten-5">1</span>
-                                <button className="btn btn-floating pink darken-1"><i className="material-icons">add</i></button>
-                            </div>
-                            <div className="add-to-cart-btn">
-                                <button className="btn-large pink darken-2">
-                                    <i className="material-icons">add_shopping_cart</i>
-                                </button> 
-                            </div>
-
-                        </div>
-                        
-                        
+                        <ProductAdd product_id={params.product_id}/>
                         <div>{description}</div>
                         <MiscDetails miscDetails={miscDetails}/>
                     </div>
