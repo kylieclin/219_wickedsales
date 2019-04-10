@@ -46,7 +46,7 @@ class ProductAdd extends Component{
 
     }
     render(){
-        console.log(this.props);
+
         return(
             <div className="right-align add-to-cart row">
                 <div className="qty-container">
