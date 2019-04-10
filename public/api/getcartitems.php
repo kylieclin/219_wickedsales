@@ -14,7 +14,7 @@ if(empty($_SESSION['cart_id'])){
 }
 
 $cart_id = $_SESSION['cart_id'];
-
+$user_id = 1;
 $query = "SELECT `p`.`name`, `p`.`price`,
     `i`.`url` AS `image`,
     `item`.`quantity`, 
@@ -28,7 +28,7 @@ $query = "SELECT `p`.`name`, `p`.`price`,
     ON `c`.`id` = `item`.`carts_id` 
     AND `item`.`products_id` = `p`.`id` 
     AND `p`.`id` = `i`.`products_id` 
-    WHERE `c`.`id`=$cart_id 
+    WHERE `c`.`id`=$cart_id AND `c`.`users_id`=$user_id 
     GROUP BY `p`.`id`
 ";
 
