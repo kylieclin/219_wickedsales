@@ -8,7 +8,7 @@ $output =[
     'success' => false
 ];
 
-$json_input = file_get_contents("php://input"); //get raw string of the body
+$json_input = file_get_contents("php://input"); //get raw string of the body from axios call(client)
 
 $input = json_decode($json_input, true); //true -> generate obj to associate arr
 
