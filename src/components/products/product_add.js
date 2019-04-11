@@ -32,18 +32,14 @@ class ProductAdd extends Component{
         const {quantity} = this.state;
         const resp = await axios.get(`/api/addcartitem.php?product_id=${id}&quantity=${quantity}`);
 
-        try{
-            this.props.history.push('/cart');
-            if(resp.data.success){
+        if(resp.data.success){
 
-                this.setState({
-                    message: 'Product added to cart :)'
-                })
-            }
-        } catch(error) {
-
+            this.setState({
+                message: 'Product added to cart :)'
+            })
         }
 
+        this.props.history.push('/cart'); //redirect to cart
     }
     render(){
 
