@@ -41,7 +41,7 @@ class ProductDetails extends Component{
     }
 
     render(){
-        const {params} = this.props.match;
+        const {match:{params} , updateCart} = this.props;
         const {details} = this.state;
 
         if(details === null){
@@ -66,7 +66,7 @@ class ProductDetails extends Component{
 
                     <div className="col s12 m4">
                         <div className="right-align product-price">{formatMoney(price)}</div> 
-                        <ProductAdd product_id={params.product_id}/>
+                        <ProductAdd product_id={params.product_id} updateCart={updateCart}/>
                         <div>{description}</div>
                         <MiscDetails miscDetails={miscDetails}/>
                     </div>
