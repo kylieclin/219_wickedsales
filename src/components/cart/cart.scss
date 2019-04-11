@@ -1,0 +1,14 @@
+.cart{
+    table{
+        .cartimg{
+            height: 75px;
+            width: auto;
+        }
+    }
+    .total-price, .total-items, .continue-shopping{
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: right;
+    }
+
+}
