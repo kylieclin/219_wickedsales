@@ -7,17 +7,18 @@ class Modal extends Component{
     }
     componentDidMount(){
 
-        M.Modal.init(this.modal);
-
     }
     render(){
-        if(this.props.isOpen){
+        const {isOpen, children, defaultAction, defaultActionText='Okay', secondAction=null, secondActionText='cancle'} = this.props;
+
+        if(isOpen){
             return(
-            <div id="modal1" className="modal" ref={element=>{this.modal = element}}>
-                <div id="modalContent" className="modal-content" ref="modalContent">
-                    {this.props.children}
+            <div id="modal1" className="sales-modal" onClick={defaultAction}>
+                <div id="modalContent" className="sales-modal-content" ref="modalContent">
+                    {children}
                     <div className="modal-actions center">
-                        <button onClick={this.props.close}>Okay</button>
+                        {secondAction ? <button onClick={secondAction} className="btn pink lighten-1">{secondActionText}</button> : null}
+                        <button className="btn pink darken-1" onClick={defaultAction}>{defaultActionText}</button>
                     </div>
                 </div>
             </div>
