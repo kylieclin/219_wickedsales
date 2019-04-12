@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import SideNav from './sidenav';
+import CartLink from './cart_link';
+import './nav.scss';
 
 class Nav extends Component{
     renderLinks(){
@@ -8,6 +10,7 @@ class Nav extends Component{
             <Fragment>
             <li className="sidenav-close"><Link to="/">Home</Link></li>
             <li className="sidenav-close"><Link to="/products">Products</Link></li>
+            <li><CartLink items={this.props.cartItems}/></li>
             </Fragment>
         )
     }

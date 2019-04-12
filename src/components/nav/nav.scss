@@ -1,0 +1,29 @@
+.cart-link{
+    position: relative;
+
+    .nav-cart{
+        font-size: 1.8em;
+    }
+
+    .cart-count{
+        position: absolute;
+        border-radius: 50%;
+        top: 15%;
+        right: 10%;
+        height: 20px;
+        width:20px;
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 500;
+        line-height: 20px;
+        color: #880e4f;
+    }
+}
+
+.sidenav{
+    .cart-count{
+        left: 15%;
+        top: 5%;
+        color: #424242;
+    }
+}

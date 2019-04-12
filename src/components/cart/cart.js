@@ -29,7 +29,7 @@ class Cart extends Component{
         }
     }
     render(){
-        console.log(this.state);
+
         const {items, meta} = this.state;
         let totalItems = 0;
 
@@ -43,6 +43,7 @@ class Cart extends Component{
                     <td>{formatMoney(price)}</td>
                     <td>{quantity}</td>
                     <td>{itemtotalPrice}</td>
+                    <td><button className="btn-floating">Delete</button></td>
                 </tr>
             )
         })
@@ -60,12 +61,13 @@ class Cart extends Component{
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Item Total</th>
+                            <th>Delete Item</th>
                         </tr>
                     </thead>
                     <tbody>
                         {cartItems}
                         <tr>
-                            <td colSpan="5" className="total-price">Total: {formatMoney(meta.total)}</td>
+                            <td colSpan="6" className="total-price">Total: {formatMoney(meta.total)}</td>
                         </tr>
                     </tbody>
                 </table>
