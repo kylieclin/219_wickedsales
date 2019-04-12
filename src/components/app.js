@@ -3,6 +3,7 @@ import 'materialize-css/dist/js/materialize.min';
 import '../assets/css/app.scss';
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
+import axios from 'axios';
 import ProductRoutes from './products'; //look for index file in the folder
 import Home from './home';
 import Nav from './nav';
@@ -19,10 +20,16 @@ class App extends Component{
 
         this.updateCartItems = this.updateCartItems.bind(this);
     }
-    updateCartItems(count){
-        this.setState({
-            cartItems: count
-        })
+    componentDidMount(){
+        this.updateCartItems();
+    }
+    async updateCartItems(){
+        const resp = await axios.get('/api/getcartitemcount.php');
+        if(resp.data.success){
+            this.setState({
+            cartItems: resp.data.itemCount
+            })
+        }
     }
     render(){
         return (
