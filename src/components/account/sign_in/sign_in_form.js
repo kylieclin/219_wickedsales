@@ -8,7 +8,7 @@ const SignInForm = props =>{
     return(
         <form onSubmit={handleSubmit(signIn)}>
             <div className="row">
-                <Field id="email" name="email" component={Input} label="Email"col="s12" />
+                <Field id="email" name="email" component={Input} label="Email" col="s12" />
             </div>
             <div className="row">
                 <Field id="password" name="password" component={Input} type="password"  label="Password" col="s12" />
