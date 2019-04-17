@@ -23,7 +23,25 @@ const SignInForm = props =>{
     )
 }
 
+function validate({email, password}){
+    const errors = {};
+
+    if(!email){
+        errors.email = 'Please enter your email'; //has to name email exact same thing as the name="email"
+    }
+
+    if(!password){
+        errors.password = 'Please enter your password'; 
+    }
+
+    return errors;
+
+}
+
 
 export default reduxForm({
-    form: 'sign-in-form'
+    form: 'sign-in-form',
+    validate: validate
 })(SignInForm); //high order function form redux form
+
+//validate has to name validate because redux form
