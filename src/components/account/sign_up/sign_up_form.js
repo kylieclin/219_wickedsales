@@ -40,7 +40,7 @@ function validate({email, name, password, confirm_password}){
       error.password = 'Please enter password'  
     }
     if(!confirm_password || password != confirm_password){
-      error.confirm_password = 'Password doesnt match'  
+      error.confirm_password = 'Password does not match'  
     }
 
     return error;
@@ -48,6 +48,6 @@ function validate({email, name, password, confirm_password}){
 
 
 export default reduxForm({
-    form: 'sign_up_form',
+    form: 'sign-up-form',
     validate: validate
 })(SignUpForm)
