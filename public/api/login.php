@@ -24,16 +24,24 @@ $email = $input['email'];
 $password = $input['password'];
 
 $email = addslashes($email); //delete all the quotes in email
-
 $hashedPassword = sha1($password);
 
 unset($input['password']);
 
 $query="SELECT `id`, `name` FROM `users` 
-    WHERE `email` = '$email' AND `password` ='$hashedPassword'
+    WHERE `email` = ? AND `password` = ?
 ";
 
-$result = mysqli_query($conn, $query);
+//sned query to db (sanitize the data)
+$statement = mysqli_prepare($conn, $query);
+//send the dangerous data to db
+mysqli_stmt_bind_param($statement, 'ss', $email, $hashedPassword);
+//tell the db to mix the query and the data, this return boolean
+mysqli_stmt_execute($statement);
+//get the query result
+$result = mysqli_stmt_get_result($statement);
+
+
 
 if(!$result){
     throw new Exception(mysqli_error($conn));
