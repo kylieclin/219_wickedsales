@@ -9,6 +9,7 @@ import Home from './home';
 import Nav from './nav';
 import NotFound from './404'; //packge.json specifiy the 404.js
 import Cart from './cart';
+import AccountRoute from './account';
 
 class App extends Component{
     constructor(props){
@@ -40,6 +41,7 @@ class App extends Component{
                   <Route exact path="/" component={Home} />
                   <Route path="/products" render={(routingprops)=> <ProductRoutes {...routingprops} updateCart={this.updateCartItems}/> }/>
                   <Route path="/cart" component={Cart} />
+                  <Route path="/account" component={AccountRoute} />
                   <Route component={NotFound} />
               </Switch>
               </div>
