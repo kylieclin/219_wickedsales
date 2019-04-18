@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) =>{
-    console.log(props)
+
     const {label, id, type = "text" , input, meta:{error, touched}, col='s12'}=props
     return(
         <div className={`input-field col ${col}`}>

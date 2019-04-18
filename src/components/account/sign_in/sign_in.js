@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import SignInForm from './sign_in_form';
+import {signIn} from '../../../actions';
 import './sign_in.scss';
 
 class SignIn extends Component{
     constructor(props){
         super(props)
 
-        // this.handleSignIn = this.handleSignIn.bind(this);
+        this.handleSignIn = this.handleSignIn.bind(this);
     }
     handleSignIn(values){
         console.log(values)
+        this.props.signIn(values);
     }
-
     render(){
         return(
             <div>
@@ -22,4 +24,6 @@ class SignIn extends Component{
     }
 }
 
-export default SignIn;
+export default connect(null, {
+    signIn: signIn
+})(SignIn);
