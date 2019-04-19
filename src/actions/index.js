@@ -1,10 +1,15 @@
-
+import types from './types';
 
 export function signIn(user){
-
-    console.log(user)
-
     return {
-        type: 'SIGN_IN'
+        type: types.SIGN_IN,
+        email: user.email
+    }
+}
+
+
+export function signOut(user){
+    return {
+        type: types.SIGN_OUT
     }
 }

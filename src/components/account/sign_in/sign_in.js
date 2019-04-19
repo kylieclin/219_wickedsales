@@ -13,6 +13,7 @@ class SignIn extends Component{
     handleSignIn(values){
         console.log(values)
         this.props.signIn(values);
+        this.props.history.push("/products");
     }
     render(){
         return(

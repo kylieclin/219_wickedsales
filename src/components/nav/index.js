@@ -84,7 +84,7 @@ class Nav extends Component{
     }
 }
 
-function mapStateToProps(state){ //state is redux state
+function mapStateToProps(state){ //state is redux state, function is for reading redux state
     return {
         userAuth: state.user.auth
     }
