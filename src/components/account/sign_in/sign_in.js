@@ -11,7 +11,6 @@ class SignIn extends Component{
         this.handleSignIn = this.handleSignIn.bind(this);
     }
     handleSignIn(values){
-        console.log(values)
         this.props.signIn(values);
         this.props.history.push("/products");
     }
