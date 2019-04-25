@@ -3,11 +3,12 @@ import axios from 'axios';
 
 export function signIn(user){
   return function(dispatch){
-      axios.get('/api/signintest.php').then(resp=>{
-
+      axios.post('/api/signintest.php', user).then(resp=>{
+        console.log(resp)
         if(resp.data.success){
             dispatch({
-                type: types.SIGN_IN
+                type: types.SIGN_IN,
+                email: resp.data.email
               });
         } else {
             dispatch({
@@ -19,11 +20,37 @@ export function signIn(user){
   }
 }
 
+export const checkAuth = ()=> async dispatch=>{
+    const resp = await axios.get('/api/check-auth.php');
 
-export function signOut(user){
-    return {
-        type: types.SIGN_OUT
+    if(resp.data.success){
+        localStorage.setItem('signedIn', 'true');
+
+        return dispatch({
+            type: types.SIGN_IN,
+            email: resp.data.email
+        })
+    } 
+    
+    return dispatch({
+            type: types.SIGN_OUT
+    })
+    
+}
+
+
+export function signOut(){
+    return function(dispatch){
+        axios.get('/api/sign-out.php').then(resp=>{
+            localStorage.removeItem('signedIn');
+            if(resp.data.success){
+                dispatch({
+                    type: types.SIGN_OUT
+                })
+            }
+        })
     }
+   
 }  
 
 export function getProducts(){
